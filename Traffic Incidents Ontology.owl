@@ -1,0 +1,1287 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/traffic_incidents_ontology#"
+     xml:base="http://www.semanticweb.org/traffic_incidents_ontology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:tic="http://www.semanticweb.org/piotr/ontologies/2019/11/ZagrozeniaRuchuDrogowego#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:traffic_incidents_ontology="http://www.semanticweb.org/traffic_incidents_ontology#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/traffic_incidents_ontology">
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+        <owl:imports rdf:resource="https://www.toyota-ti.ac.jp/Lab/Denshi/COIN/Ontology/TTICore-0.03/TTICarOnto.owl"/>
+        <rdfs:comment xml:lang="en">English definitions are translations of Polish definitions</rdfs:comment>
+        <rdfs:comment xml:lang="en">contact
+Piotr Tomaszewski
+piotr.tomaszewski29@gmail.com</rdfs:comment>
+        <rdfs:comment xml:lang="pl">definicje anglojęzyczne są tłumaczeniami polskich definicji</rdfs:comment>
+        <rdfs:comment xml:lang="pl">ontologia zdarzeń drogowych</rdfs:comment>
+        <rdfs:label xml:lang="en">traffic incident ontology</rdfs:label>
+        <owl:versionInfo xml:lang="en">TIC Ontology v.1</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#g -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#g">
+        <rdfs:label xml:lang="en">gram</rdfs:label>
+        <rdfs:label xml:lang="pl">gram</rdfs:label>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#kph -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#kph">
+        <rdfs:label xml:lang="en">kilometers per hour</rdfs:label>
+        <rdfs:label xml:lang="pl">kilometry na godzinę</rdfs:label>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#mm -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#mm">
+        <rdfs:label xml:lang="en">milimeter</rdfs:label>
+        <rdfs:label xml:lang="pl">milimetr</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#canColideWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#canColideWith">
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+        <rdfs:label xml:lang="en">can colide with</rdfs:label>
+        <rdfs:label xml:lang="pl">może uderzyć w</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#hasCause -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#hasCause">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isCauseOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:label xml:lang="en">has cause</rdfs:label>
+        <rdfs:label xml:lang="pl">ma przyczynę</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#hasDangerousBehaviour -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#hasDangerousBehaviour">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isDangerousBehaviourOf"/>
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:label xml:lang="en">has dangerous behaviour</rdfs:label>
+        <rdfs:label xml:lang="pl">ma niebezpieczne zachowanie</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#hasEffect -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#hasEffect">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isEffectOf"/>
+        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <rdfs:label xml:lang="en">has effect</rdfs:label>
+        <rdfs:label xml:lang="pl">ma skutek</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#hasInfluenceOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#hasInfluenceOn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Weather"/>
+        <rdfs:label xml:lang="en">has influence on</rdfs:label>
+        <rdfs:label xml:lang="pl">ma wpływ na</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#hasRole -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#hasRole">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isARole"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Person"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+        <rdfs:label xml:lang="en">has role</rdfs:label>
+        <rdfs:label xml:lang="pl">pełni rolę</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isTrafficUserOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:label xml:lang="en">has traffic user</rdfs:label>
+        <rdfs:label xml:lang="pl">ma użytkownika ruchu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isARole -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isARole">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Person"/>
+        <rdfs:label xml:lang="en">is a role of</rdfs:label>
+        <rdfs:label xml:lang="pl">jest rolą</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isAuthorizedToDrive -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isAuthorizedToDrive">
+        <rdfs:range rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:label xml:lang="en">is authorized to drive</rdfs:label>
+        <rdfs:label xml:lang="pl">jest upoważniony do prowadzenia</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isCauseOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isCauseOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+        <rdfs:label xml:lang="en">is cause of</rdfs:label>
+        <rdfs:label xml:lang="pl">jest przyczyną</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isDamaged -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isDamaged">
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+        <rdfs:label xml:lang="en">is damaged from</rdfs:label>
+        <rdfs:label xml:lang="pl">jest uszkodzony od</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isDangerousBehaviourOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isDangerousBehaviourOf">
+        <rdfs:label xml:lang="en">is dangerous behaviour of</rdfs:label>
+        <rdfs:label xml:lang="pl">jest niebezpiecznym zachowaniem</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isEffectOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isEffectOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:label xml:lang="en">is effect of</rdfs:label>
+        <rdfs:label xml:lang="pl">jest skutkiem</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+        <rdfs:label xml:lang="en">is offense of</rdfs:label>
+        <rdfs:label xml:lang="pl">jest wykroczeniem</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isTrafficUserOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isTrafficUserOf">
+        <rdfs:label xml:lang="en">is traffic user of</rdfs:label>
+        <rdfs:label xml:lang="pl">jest użytkownikiem ruchu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#isVictim -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#isVictim">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Person"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+        <rdfs:label>is victim from</rdfs:label>
+        <rdfs:label xml:lang="pl">jest ofiarą od</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#DistanceBack -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#DistanceBack">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#mm"/>
+        <rdfs:label xml:lang="en">distance back</rdfs:label>
+        <rdfs:label xml:lang="pl">odległość z tyłu</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#DistanceFront -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#DistanceFront">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#mm"/>
+        <rdfs:label xml:lang="en">distance front</rdfs:label>
+        <rdfs:label xml:lang="pl">odległość z przodu</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#MovementSpeed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#MovementSpeed">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#kph"/>
+        <rdfs:label xml:lang="en">movement speed</rdfs:label>
+        <rdfs:label xml:lang="pl">prędkość poruszania się</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#NumberOfPeopleInTheVehicle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#NumberOfPeopleInTheVehicle">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="pl">ilość osób w pojeździe</rdfs:label>
+        <rdfs:label xml:lang="en">number of people in the vehicle</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#ObjectMass -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#ObjectMass">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#g"/>
+        <rdfs:label xml:lang="pl">masa obiektu</rdfs:label>
+        <rdfs:label xml:lang="en">object mass</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#ObjectValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#ObjectValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="en">object vaule</rdfs:label>
+        <rdfs:label xml:lang="pl">wartość obiektu</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#VehicleHeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#VehicleHeight">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#mm"/>
+        <rdfs:label xml:lang="en">vehicle height</rdfs:label>
+        <rdfs:label xml:lang="pl">wysokość pojazdu</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#VehicleLenght -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#VehicleLenght">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#mm"/>
+        <rdfs:label xml:lang="pl">długość pojazdu</rdfs:label>
+        <rdfs:label xml:lang="en">vehicle lenght</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#VehicleMass -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#VehicleMass">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#g"/>
+        <rdfs:label xml:lang="pl">masa pojazdu</rdfs:label>
+        <rdfs:label xml:lang="en">vehicle mass</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#VehicleSeats -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#VehicleSeats">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="pl">siedzenia samochodowe</rdfs:label>
+        <rdfs:label xml:lang="en">vehicle seats</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#Accident -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#Accident">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasEffect"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DestructionOfPropertyFromATrafficIncident"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasEffect"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#VictimFromATrafficIncident"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasEffect"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DeathFromATrafficIncident"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Collision"/>
+        <rdfs:isDefinedBy xml:lang="en">accident = def. traffic incident where one or more road users are involved in the event as a result of which a road participant has been injured or has died</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">wypadek = def. zdarzenie w ruchu drogowym, gdzie jeden lub więcej uczestników ruchu drogowego bierze udział w zdarzeniu, w wyniku którego uczestnik ruchu drogowego został ranny lub doszło do jego śmierci.</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">accident</rdfs:label>
+        <rdfs:label xml:lang="pl">wypadek</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Accident"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">wypadek = def. zdarzenie w ruchu drogowym, gdzie jeden lub więcej uczestników ruchu drogowego bierze udział w zdarzeniu, w wyniku którego uczestnik ruchu drogowego został ranny lub doszło do jego śmierci.</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.wikipedia.org/wiki/Wypadek_drogowy</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#Collision -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#Collision">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasEffect"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DestructionOfPropertyFromATrafficIncident"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">collision = def. a road incident which resulted only in material losses and as a result of which persons participating in it do not suffer death or injuries</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">kolizja = def. zdarzenie drogowe, które pociągnęło za sobą wyłącznie straty materialne, a w wyniku którego osoby w nim uczestniczące nie ponoszą śmierci ani nie doznają urazów.</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">collision</rdfs:label>
+        <rdfs:label xml:lang="pl">kolizja</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Collision"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">kolizja = def. zdarzenie drogowe, które pociągnęło za sobą wyłącznie straty materialne, a w wyniku którego osoby w nim uczestniczące nie ponoszą śmierci ani nie doznają urazów.</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.wikipedia.org/wiki/Kolizja_drogowa</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#PossibleTrafficIncidentCauses"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasEffect"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">dangerous behaviour</rdfs:label>
+        <rdfs:label xml:lang="pl">niebezpieczne zachowanie</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#DangerousOvertaking -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#DangerousOvertaking">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">dangerous overtaking</rdfs:label>
+        <rdfs:label xml:lang="pl">niebezpiecznie wyprzedzanie</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#DeathFromATrafficIncident -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#DeathFromATrafficIncident">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncidentEffect"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DestructionOfPropertyFromATrafficIncident"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#VictimFromATrafficIncident"/>
+        <rdfs:isDefinedBy xml:lang="en">death = def. a process leading to the cessation of all vital functions of the body as a result of irreversible inhibition of biological reactions in its cells</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">śmierć = def. proces prowadzący do ustania wszelkich funkcji życiowych organizmu w wyniku nieodwracalnego zahamowania reakcji biologicznych w jego komórkach.</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">death from a traffic incident</rdfs:label>
+        <rdfs:label xml:lang="pl">śmierć w wyniku wypadku drogowego</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DeathFromATrafficIncident"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">śmierć = def. proces prowadzący do ustania wszelkich funkcji życiowych organizmu w wyniku nieodwracalnego zahamowania reakcji biologicznych w jego komórkach.</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ekologia.pl/wiedza/slowniki/leksykon-ekologii-i-ochrony-srodowiska/smierc</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#DestructionOfPropertyFromATrafficIncident -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#DestructionOfPropertyFromATrafficIncident">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncidentEffect"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#VictimFromATrafficIncident"/>
+        <rdfs:isDefinedBy xml:lang="en">destruction of property = def. act prohibited by art. 288 of the Penal Code and art. 124, as above consisting in destroying someone else&apos;s property, damaging it or rendering it unusable.</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">zniszczenie mienia = def. czyn zabroniony przez art. 288 k.k. i art. 124 k.w. polegający na niszczeniu cudzej rzeczy, uszkodzeniu jej lub uczynieniu niezdatną do użytku.</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">destruction of property from a traffic incident</rdfs:label>
+        <rdfs:label xml:lang="pl">zniszczenie mienia w wyniku wypadku drogowego</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DestructionOfPropertyFromATrafficIncident"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">zniszczenie mienia = def. czyn zabroniony przez art. 288 k.k. i art. 124 k.w. polegający na niszczeniu cudzej rzeczy, uszkodzeniu jej lub uczynieniu niezdatną do użytku.</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.wikipedia.org/wiki/Zniszczenie_mienia</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#Driver -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#Driver">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficParticipant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isARole"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isAuthorizedToDrive"/>
+                <owl:someValuesFrom rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Pedestrian"/>
+        <rdfs:isDefinedBy xml:lang="en">driver = def. a person authorized to drive a motor vehicle or moped;</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">kierowca – def = osoba uprawniona do kierowania pojazdem silnikowym lub motorowerem;</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">driver</rdfs:label>
+        <rdfs:label xml:lang="pl">kierowca</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">kierowca – def = osoba uprawniona do kierowania pojazdem silnikowym lub motorowerem;</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#DrivingUnderTheInfluence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#DrivingUnderTheInfluence">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">driving under the influence = def. driving motor or non-mechanical vehicles during or after consuming alcohol or psychoactive substances</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">prowadzenie pojazdu w stanie nietrzeźwości = def. kierowanie pojazdem mechanicznym albo innym niż mechaniczny w okresie spożywania lub po spożyciu alkoholu lub substancji psychoaktywnych</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">driving under the influence</rdfs:label>
+        <rdfs:label xml:lang="pl">prowadzenie pojazdu w stanie nietrzeźwości</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DrivingUnderTheInfluence"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">prowadzenie pojazdu w stanie nietrzeźwości = def. kierowanie pojazdem mechanicznym albo innym niż mechaniczny w okresie spożywania lub po spożyciu alkoholu lub substancji psychoaktywnych</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.wikipedia.org/wiki/Prowadzenie_pojazdu_w_stanie_nietrze%C5%BAwo%C5%9Bci</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#EntryOnRedLight -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#EntryOnRedLight">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Pedestrian"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">entry on red light</rdfs:label>
+        <rdfs:label xml:lang="pl">wejście na czerwonym świetle</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#ForcingTheRightOfWay -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#ForcingTheRightOfWay">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Pedestrian"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">forcing the right of way = def. refraining from traffic if this traffic may force another driver to change direction or lane or change the speed significantly and to stop, slow down or accelerate by pedestrians</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">wymuszenie pierwszeństwa = def. niepowstrzymanie się od ruchu, jeżeli ruch mógłby zmusić innego kierującego do zmiany kierunku lub pasa ruchu albo istotnej zmiany prędkości, a pieszego - do zatrzymania się, zwolnienia lub przyspieszenia kroku</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">forcing the right of way</rdfs:label>
+        <rdfs:label xml:lang="pl">wymuszenie pierwszeństwa</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#ForcingTheRightOfWay"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">wymuszenie pierwszeństwa = def. niepowstrzymanie się od ruchu, jeżeli ruch mógłby zmusić innego kierującego do zmiany kierunku lub pasa ruchu albo istotnej zmiany prędkości, a pieszego - do zatrzymania się, zwolnienia lub przyspieszenia kroku</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://e-prawnik.pl/porady-prawne/wymuszenie-pierwszenstwa.html</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#InoperativeVehicle -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#InoperativeVehicle">
+        <rdfs:subClassOf rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:label xml:lang="en">inoperative vehicle</rdfs:label>
+        <rdfs:label xml:lang="pl">niesprawny pojazd</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#MovingObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#MovingObject">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#StaticObject"/>
+        <rdfs:label xml:lang="en">moving object</rdfs:label>
+        <rdfs:label xml:lang="pl">obiekt ruchomy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#NotAdaptingSpeedToWeatherConditions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#NotAdaptingSpeedToWeatherConditions">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="pl">niedostosowanie prędkości do warunków atmosferycznych</rdfs:label>
+        <rdfs:label xml:lang="en">not adapting speed to weather conditions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#Pedestrian -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#Pedestrian">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficParticipant"/>
+        <rdfs:isDefinedBy xml:lang="en">pedestrian = def. a person who is outside the vehicle on the road and does not carry out works or activities provided for in separate regulations on it</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">pieszy = def. osoba znajdująca się poza pojazdem na drodze i niewykonującą na niej robót lub czynności przewidzianych odrębnymi przepisami</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">pedestrian</rdfs:label>
+        <rdfs:label xml:lang="pl">pieszy</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Pedestrian"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">pieszy = def. osoba znajdująca się poza pojazdem na drodze i niewykonującą na niej robót lub czynności przewidzianych odrębnymi przepisami</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.wikipedia.org/wiki/Pieszy</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#Person">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isAuthorizedToDrive"/>
+                <owl:someValuesFrom rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <rdfs:isDefinedBy xml:lang="pl">osoba = def. jednostka ludzka</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="en">person = def. a human being regarded as an individual</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="pl">osoba</rdfs:label>
+        <rdfs:label xml:lang="en">person</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Person"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="en">person = def. a human being regarded as an individual</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.lexico.com/en/definition/person</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#PossibleTrafficIncidentCauses -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#PossibleTrafficIncidentCauses">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <rdfs:label xml:lang="pl">możliwa przyczyna zdarzeń drogowych</rdfs:label>
+        <rdfs:label xml:lang="en">possible traffic incident cause</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#SpeedMismatching -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#SpeedMismatching">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="pl">niedopasowanie prędkości</rdfs:label>
+        <rdfs:label xml:lang="en">speed mismatching</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#StaticObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#StaticObject">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+        <rdfs:label xml:lang="pl">obiekt statyczny</rdfs:label>
+        <rdfs:label xml:lang="en">static object</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#TooHigh -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#TooHigh">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#SpeedMismatching"/>
+        <rdfs:label xml:lang="en">too high</rdfs:label>
+        <rdfs:label xml:lang="pl">zbyt duża prędkość</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#TooLow -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#TooLow">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#SpeedMismatching"/>
+        <rdfs:label xml:lang="en">too low</rdfs:label>
+        <rdfs:label xml:lang="pl">zbyt mała prędkość</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#TooSmallDistanceBetweenVehicles -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#TooSmallDistanceBetweenVehicles">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">too small distance between vehicles</rdfs:label>
+        <rdfs:label xml:lang="pl">zachowanie zbyt małej odległości między pojazdami</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasCause"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasEffect"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncidentEffect"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficParticipant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isEffectOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#PossibleTrafficIncidentCauses"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">traffic incident = def. all road accidents - irrespective of whether there is an accident or serious material damage</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="pl">zdarzenie drogowe = def. wszystkie wydarzenia na drodze – niezależnie od tego, czy są jakieś ofiary lub poważne straty materialne</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">traffic incident</rdfs:label>
+        <rdfs:label xml:lang="pl">zdarzenie drogowe</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">zdarzenie drogowe = def. wszystkie wydarzenia na drodze – niezależnie od tego, czy są jakieś ofiary lub poważne straty materialne</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.zadluzenia.com/zdarzenie-drogowe/</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncidentEffect -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncidentEffect">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isEffectOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="pl">skutek zdarzenia drogowego</rdfs:label>
+        <rdfs:label xml:lang="en">traffic incident effect</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#TrafficParticipant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#TrafficParticipant">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isARole"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">traffic participant = def. pedestrians, drivers, and other people in the vehicle or on a vehicle on the road</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy>uzestnik ruchu = def. pieszy, kierujący, a także inne osoby przebywające w pojeździe lub na pojeździe znajdującym się na drodze</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">traffic participant</rdfs:label>
+        <rdfs:label xml:lang="pl">uczestnik ruchu</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficParticipant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget>uzestnik ruchu = def. pieszy, kierujący, a także inne osoby przebywające w pojeździe lub na pojeździe znajdującym się na drodze</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.wikipedia.org/wiki/Uczestnik_ruchu</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <rdfs:isDefinedBy xml:lang="en">traffic violation = def. socially act (even to a slight extent), prohibited by the law in force at the time of its commission, under pain of imprisonment, restriction of liberty, fine up to PLN 5,000 or reprimand</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">wykroczenie drogowe = def.czyn szkodliwy (nawet w stopniu znikomym), zabroniony przez ustawę obowiązującą w czasie jego popełnienia pod groźbą kary aresztu, ograniczenia wolności, grzywny do 5000 złotych lub nagany</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">traffic violation</rdfs:label>
+        <rdfs:label xml:lang="pl">wykroczenie drogowe</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">wykroczenie drogowe = def.czyn szkodliwy (nawet w stopniu znikomym), zabroniony przez ustawę obowiązującą w czasie jego popełnienia pod groźbą kary aresztu, ograniczenia wolności, grzywny do 5000 złotych lub nagany</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.wikipedia.org/wiki/Wykroczenie</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#UsingMobilePhoneDuringDriving -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#UsingMobilePhoneDuringDriving">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#DangerousBehaviour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#isOffenseOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficViolation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasTrafficUser"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="pl">korzystanie z telefonu komórkowego podczas prowadzenia samochodu</rdfs:label>
+        <rdfs:label xml:lang="en">using mobile phone during driving</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#VictimFromATrafficIncident -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#VictimFromATrafficIncident">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncidentEffect"/>
+        <rdfs:isDefinedBy xml:lang="pl">poszkodowany = def. osoba, która ucierpiała w wyniku wypadku lub innego nieszczęśliwego zdarzenia</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="pl">victim = def. a person who has suffered as a result of an accident or other unfortunate event</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="pl">poszkodowanie w wyniku wypadku drogowego</rdfs:label>
+        <rdfs:label xml:lang="en">victim from a traffic incident</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#VictimFromATrafficIncident"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">poszkodowany = def. osoba, która ucierpiała w wyniku wypadku lub innego nieszczęśliwego zdarzenia</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.glosbe.com/pl/pl/poszkodowany</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#Weather -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#Weather">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000145"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#hasInfluenceOn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#TrafficIncident"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="pl">pogoda = def. stan atmosfery w danym miejscu i czasie; w szerszym ujęciu – warunki meteorologiczne na danym obszarze.</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="en">weather = def. the state of the atmosphere at a given place and time; in a broader sense - meteorological conditions in a given area.</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="pl">pogoda</rdfs:label>
+        <rdfs:label xml:lang="en">weather</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#Weather"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">pogoda = def. stan atmosfery w danym miejscu i czasie; w szerszym ujęciu – warunki meteorologiczne na danym obszarze.</owl:annotatedTarget>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://pl.wikipedia.org/wiki/Pogoda</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/Car#RegularVehicle -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/Car#RegularVehicle">
+        <owl:disjointWith rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/Car#SpecialVehicle"/>
+        <rdfs:label xml:lang="en">regular vehicle</rdfs:label>
+        <rdfs:label xml:lang="pl">zwykły pojazd</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/Car#SpecialVehicle -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/Car#SpecialVehicle">
+        <rdfs:isDefinedBy xml:lang="pl">pojazd specjalny = def. pojazd samochodowy lub przyczepa przeznaczone do wykonywania specjalnej funkcji, która powoduje konieczność dostosowania nadwozia lub posiadania specjalnego wyposażenia; w pojeździe tym mogą być przewożone osoby i rzeczy związane z wykonywaniem tej funkcji</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="en">special vehicle = def. a motor vehicle or trailer designed to perform a special function that necessitates the adjustment of the bodywork or special equipment; persons and objects connected with the performance of this function may be carried in this vehicle</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="pl">pojazd specjalny</rdfs:label>
+        <rdfs:label xml:lang="en">special vehicle</rdfs:label>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/Car#SpecialVehicle"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">pojazd specjalny = def. pojazd samochodowy lub przyczepa przeznaczone do wykonywania specjalnej funkcji, która powoduje konieczność dostosowania nadwozia lub posiadania specjalnego wyposażenia; w pojeździe tym mogą być przewożone osoby i rzeczy związane z wykonywaniem tej funkcji</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#CarParts -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#CarParts">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#LargeSpecialVehicle -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#LargeSpecialVehicle">
+        <owl:disjointWith rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#SmallSpecialVehicle"/>
+        <rdfs:label xml:lang="pl">duży pojazd specjalny</rdfs:label>
+        <rdfs:label xml:lang="en">large special vehicle</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#SmallSpecialVehicle -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#SmallSpecialVehicle">
+        <rdfs:label xml:lang="pl">mały pojazd specjalny</rdfs:label>
+        <rdfs:label xml:lang="en">small special vehicle</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Trajectory -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Trajectory">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#canColideWith"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">vehicle = def.  means of transport intended for traveling on the road, and
+a machine or device adapted for this;</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="pl">pojazd = def. środek transportu przeznaczony do poruszania się po drodze oraz maszynę lub urządzenie do tego przystosowane;</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="pl">pojazd</rdfs:label>
+        <rdfs:label xml:lang="en">vehicle</rdfs:label>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Vehicle"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">pojazd = def. środek transportu przeznaczony do poruszania się po drodze oraz maszynę lub urządzenie do tego przystosowane;</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#car_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#car_1">
+        <canColideWith rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#car_2"/>
+        <canColideWith rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#object_1"/>
+        <hasDangerousBehaviour rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#event_1"/>
+        <isDamaged rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#event_3"/>
+        <rdfs:label xml:lang="en">bmw</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#car_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#car_2">
+        <rdfs:label xml:lang="en">volksvagen</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#event_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#event_1">
+        <rdfs:label xml:lang="en">speed mismatching</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#event_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#event_2">
+        <isEffectOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#event_1"/>
+        <rdfs:label xml:lang="en">slips</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#event_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#event_3">
+        <rdfs:label xml:lang="en">hit the slope</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#event_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#event_4">
+        <isOffenseOf rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#rule_1"/>
+        <rdfs:label xml:lang="en">hit the volksvagen</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#object_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#object_1">
+        <rdfs:label xml:lang="en">slope</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#p1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#p1">
+        <isAuthorizedToDrive rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#car_1"/>
+        <isVictim rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#event_4"/>
+        <rdfs:label xml:lang="en">woman</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#p2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#p2">
+        <isAuthorizedToDrive rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#car_2"/>
+        <rdfs:label xml:lang="en">man</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#rule_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#rule_1">
+        <rdfs:label xml:lang="en">art. 177 § 1 kk</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/traffic_incidents_ontology#weather_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/traffic_incidents_ontology#weather_1">
+        <hasInfluenceOn rdf:resource="http://www.semanticweb.org/traffic_incidents_ontology#event_2"/>
+        <rdfs:label xml:lang="en">raining day</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/Car#MyCar">
+        <rdfs:label xml:lang="pl">mój samochód</rdfs:label>
+        <rdfs:label xml:lang="en">my car</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Automobile">
+        <rdfs:label xml:lang="en">automobile</rdfs:label>
+        <rdfs:isDefinedBy xml:lang="pl">samochód = def. pojazd silnikowy, którego konstrukcja umożliwia jazdę z prędkością przekraczającą 25 km/h; określenie to nie obejmuje ciągnika rolniczego</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="pl">pojazd samochodowy</rdfs:label>
+        <rdfs:isDefinedBy xml:lang="en">automobile = def. a motor vehicle whose design allows it to travel at a speed exceeding 25 km / h; this term does not include an agricultural tractor</rdfs:isDefinedBy>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Automobile"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">samochód = def. pojazd silnikowy, którego konstrukcja umożliwia jazdę z prędkością przekraczającą 25 km/h; określenie to nie obejmuje ciągnika rolniczego</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Bicycle">
+        <rdfs:isDefinedBy xml:lang="pl">rower = def. pojazd o szerokości nieprzekraczającej 0,9 m poruszany siłą mięśni osoby jadącej tym pojazdem; rower może być wyposażony w uruchamiany naciskiem na pedały pomocniczy napęd elektryczny zasilany prądem o napięciu nie wyższym niż 48 V o znamionowej mocy ciągłej nie większej niż 250 W, którego moc wyjściowa zmniejsza się stopniowo i spada do zera po przekroczeniu prędkości 25 km/h</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="en">bicycle = def. a vehicle not exceeding 0,9 m in width, moved by the muscular strength of a person riding that vehicle; the bicycle may be equipped with an additional pedal driven by electric pressure supplied with a voltage of not more than 48 V with a rated continuous power of not more than 250 W, whose output power gradually decreases and drops to zero after exceeding 25 km / h</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">bicycle</rdfs:label>
+        <rdfs:label xml:lang="pl">rower</rdfs:label>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Bicycle"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">rower = def. pojazd o szerokości nieprzekraczającej 0,9 m poruszany siłą mięśni osoby jadącej tym pojazdem; rower może być wyposażony w uruchamiany naciskiem na pedały pomocniczy napęd elektryczny zasilany prądem o napięciu nie wyższym niż 48 V o znamionowej mocy ciągłej nie większej niż 250 W, którego moc wyjściowa zmniejsza się stopniowo i spada do zera po przekroczeniu prędkości 25 km/h</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Bus">
+        <rdfs:label xml:lang="pl">autobus</rdfs:label>
+        <rdfs:isDefinedBy xml:lang="en">bus = def. a motor vehicle designed to carry more than 9 people, including the driver</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">bus</rdfs:label>
+        <rdfs:isDefinedBy xml:lang="pl">autobus = def. pojazd samochodowy przeznaczony konstrukcyjnie do przewozu więcej niż 9 osób łącznie z kierowcą</rdfs:isDefinedBy>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Bus"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">autobus = def. pojazd samochodowy przeznaczony konstrukcyjnie do przewozu więcej niż 9 osób łącznie z kierowcą</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Car">
+        <rdfs:label xml:lang="pl">samochód</rdfs:label>
+        <rdfs:label xml:lang="en">car</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Motorcycle">
+        <rdfs:label xml:lang="en">motocycle</rdfs:label>
+        <rdfs:label xml:lang="pl">motocykl</rdfs:label>
+        <rdfs:isDefinedBy xml:lang="pl">motocykl = def. pojazd samochodowy zaopatrzony w silnik spalinowy, dwukołowy lub z bocznym wózkiem – wielośladowy</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="en">bicycle = def.  motor vehicle equipped with an internal combustion engine, two-wheeled or with side-car - multi-track</rdfs:isDefinedBy>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Motorcycle"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">motocykl = def. pojazd samochodowy zaopatrzony w silnik spalinowy, dwukołowy lub z bocznym wózkiem – wielośladowy</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#PassengerCar">
+        <rdfs:label xml:lang="pl">samochód osobowy</rdfs:label>
+        <rdfs:isDefinedBy xml:lang="pl">samochód osobowy = def. pojazd samochodowy przeznaczony konstrukcyjnie do przewozu nie więcej niż 9 osób łącznie z kierowcą oraz ich bagażu;</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="en">passenger car = def. a motor vehicle designed for the transport of no more than 9 people including the driver and their luggage;</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">passenger car</rdfs:label>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#PassengerCar"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">samochód osobowy = def. pojazd samochodowy przeznaczony konstrukcyjnie do przewozu nie więcej niż 9 osób łącznie z kierowcą oraz ich bagażu;</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+    <rdf:Description rdf:about="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Truck">
+        <rdfs:isDefinedBy xml:lang="pl">samochód ciężarowy = def. pojazd samochodowy przeznaczony konstrukcyjnie do przewozu ładunków; określenie to obejmuje również samochód ciężarowo- -osobowy przeznaczony konstrukcyjnie do przewozu ładunków i osób w liczbie
+od 4 do 9 łącznie z kierowcą;</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">truck = def. a motor vehicle designed to carry loads; this term also includes a truck and passenger car designed for the carriage of loads and persons from 4 to 9 including the driver;</rdfs:comment>
+        <rdfs:label xml:lang="pl">samochód ciężarowy</rdfs:label>
+        <rdfs:label xml:lang="en">truck</rdfs:label>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.toyota-ti.ac.jp/Lab/Denshi/COIN/sensor#Truck"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+        <owl:annotatedTarget xml:lang="pl">samochód ciężarowy = def. pojazd samochodowy przeznaczony konstrukcyjnie do przewozu ładunków; określenie to obejmuje również samochód ciężarowo- -osobowy przeznaczony konstrukcyjnie do przewozu ładunków i osób w liczbie
+od 4 do 9 łącznie z kierowcą;</owl:annotatedTarget>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://prawo.sejm.gov.pl/isap.nsf/download.xsp/WDU19970980602/U/D19970602Lj.pdf</rdfs:isDefinedBy>
+    </owl:Axiom>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
